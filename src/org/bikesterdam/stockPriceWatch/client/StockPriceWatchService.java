@@ -6,6 +6,10 @@ import com.google.gwt.core.client.GWT;
 
 @RemoteServiceRelativePath("StockPriceWatchService")
 public interface StockPriceWatchService extends RemoteService {
+
+
+    StockPrice[] getPrices(String[] symbols);
+
     /**
      * Utility/Convenience class.
      * Use StockPriceWatchService.App.getInstance() to access static instance of StockPriceWatchServiceAsync
