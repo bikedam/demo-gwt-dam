@@ -1,4 +1,4 @@
-package org.bikesterdam.stockPriceWatch.client;
+package org.bikesterdam.stockPriceWatch.client.model;
 
 import java.io.Serializable;
 

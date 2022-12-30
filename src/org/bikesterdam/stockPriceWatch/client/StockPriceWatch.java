@@ -9,6 +9,8 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import org.bikesterdam.stockPriceWatch.client.model.DelistedException;
+import org.bikesterdam.stockPriceWatch.client.model.StockPrice;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -166,14 +168,14 @@ public class StockPriceWatch implements EntryPoint {
         AsyncCallback<StockPrice[]> callback = new AsyncCallback<StockPrice[]>() {
             public void onFailure(Throwable caught) {
                 // If the stock code is in the list of delisted codes, display an error message.
-//                String details = caught.getMessage();
-//                if (caught instanceof DelistedException) {
-//                    details = "Company '" + ((DelistedException)caught).getSymbol() + "' was delisted";
-//                    errorMsgLabel.setText("Error: " + details);
-//                    errorMsgLabel.setVisible(true);
-//                } else {
-//                    serverAvailable = false;
-//                }
+                String details = caught.getMessage();
+                if (caught instanceof DelistedException) {
+                    details = "Company '" + ((DelistedException)caught).getSymbol() + "' was delisted";
+                    errorMsgLabel.setText("Error: " + details);
+                    errorMsgLabel.setVisible(true);
+                } else {
+                    serverAvailable = false;
+                }
             }
 
             public void onSuccess(StockPrice[] result) {
